@@ -93,7 +93,7 @@ defmodule Absinthe.Phase.Document.Arguments.VariableTypesMatch do
 
     #   _ ->
     #     node
-    end
+    # end
   end
 
   defp check_variable_type(node, _, _) do
