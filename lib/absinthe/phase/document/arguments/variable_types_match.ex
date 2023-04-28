@@ -68,30 +68,31 @@ defmodule Absinthe.Phase.Document.Arguments.VariableTypesMatch do
          operation_name,
          variable_defs
        ) do
-    location_type = node.input_value.schema_node
-    location_definition = node.schema_node
+    node
+    # location_type = node.input_value.schema_node
+    # location_definition = node.schema_node
 
-    case Map.get(variable_defs, variable.name) do
-      %{schema_node: variable_type} = variable_definition ->
-        if types_compatible?(
-             variable_type,
-             location_type,
-             variable_definition,
-             location_definition
-           ) do
-          node
-        else
-          variable =
-            put_error(
-              variable,
-              error(operation_name, variable, variable_definition, location_type)
-            )
+    # case Map.get(variable_defs, variable.name) do
+    #   %{schema_node: variable_type} = variable_definition ->
+    #     if types_compatible?(
+    #          variable_type,
+    #          location_type,
+    #          variable_definition,
+    #          location_definition
+    #        ) do
+    #       node
+    #     else
+    #       variable =
+    #         put_error(
+    #           variable,
+    #           error(operation_name, variable, variable_definition, location_type)
+    #         )
 
-          {:halt, put_in(node.input_value.raw.content, variable)}
-        end
+    #       {:halt, put_in(node.input_value.raw.content, variable)}
+    #     end
 
-      _ ->
-        node
+    #   _ ->
+    #     node
     end
   end
 
